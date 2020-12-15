@@ -3,20 +3,22 @@ import { toast } from 'react-toastify';
 
 class Searchbar extends Component {
   state = {
-    imageName: '',
+    image: '',
   };
+  //получение значения input
   handleNameChange = event => {
-    this.setState({ imageName: event.currentTarget.value.toLowerCase() });
+    this.setState({ image: event.currentTarget.value.toLowerCase() });
   };
+  //отправка значения из формы
   handleSubmit = event => {
     event.preventDefault();
-    if (this.state.imageName.trim() === '') {
+    if (this.state.image.trim() === '') {
       toast('Please enter the query !');
       return;
     }
     // this.props.onSubmit - вызывает props из App под именем onSubmit
-    this.props.onSubmitForm(this.state.imageName);
-    this.setState({ imageName: '' });
+    this.props.onSubmitForm(this.state.image);
+    this.setState({ image: '' });
   };
   render() {
     return (
@@ -30,7 +32,7 @@ class Searchbar extends Component {
             className="SearchForm-input"
             type="text"
             name="imageName"
-            value={this.state.imageName}
+            value={this.state.image}
             onChange={this.handleNameChange}
             autocomplete="off"
             autofocus

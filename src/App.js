@@ -8,18 +8,16 @@ import ImagesInfo from './ImagesInfo/ImagesInfo';
 
 export default class App extends Component {
   state = {
-    imageName: '',
+    image: '',
   };
-  handleFormSubmit = imageName => {
-    this.setState({ imageName });
+  handleFormSubmit = image => {
+    this.setState({ image });
   };
   render() {
     return (
       <>
         <Searchbar onSubmitForm={this.handleFormSubmit} />
-        {/* <ImageGalleryItem imageName={this.state.imageName} /> */}
-        {/* <ImageGallery /> */}
-        <ImagesInfo />
+        <ImagesInfo imgItem={this.state.image} />
         <ToastContainer />
       </>
     );
