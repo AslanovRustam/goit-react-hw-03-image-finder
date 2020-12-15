@@ -12,7 +12,7 @@ export default class ImageGalleryItem extends Component {
 
   render() {
     const { showModal } = this.state;
-    const { src, alt, modalImg } = this.props;
+    const { src, alt, largeImageUrl } = this.props;
 
     return (
       <li className="ImageGalleryItem">
@@ -23,7 +23,7 @@ export default class ImageGalleryItem extends Component {
           onClick={this.toggleModal}
         />
         {showModal && (
-          <Modal onClose={this.toggleModal} src={modalImg} alt={alt} />
+          <Modal onClose={this.toggleModal} src={largeImageUrl} alt={alt} />
         )}
       </li>
     );
