@@ -5,20 +5,18 @@ import ImageGallery from '../ImageGallery/Imagegallery';
 import Api from '../ImagesApi';
 import Button from '../Button/Button';
 import Loader from '../Loader/Loader';
+import s from '../ImagesInfo/image.modal.css';
 
-// export default class ImageGalleryItem extends Component {
 export default class ImagesInfo extends Component {
   state = {
     images: [],
-    // imageName: null,
-    // loading: false,
     status: 'idle',
     error: null,
     page: 1,
   };
 
   static propTypes = {
-    imageName: PropTypes.string,
+    imgItem: PropTypes.string,
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -37,6 +35,16 @@ export default class ImagesInfo extends Component {
 
       Api.fetchImages(nextImg, nextPage)
         .then(images => this.setState({ images, status: 'resolved' }))
+        // .then({images, page} => this.setState({ images, status: 'resolved' }))
+        // .then(newImages => {
+        //   if (newImages.total !== 0) {
+        //     this.setState(prevState => ({
+        //       images: [...prevState.images, ...newImages.hits],
+        //       status: 'resolved',
+        //     }));
+        //     return;
+        //   }
+        // })
         .catch(error => this.setState({ error, status: 'rejected' }));
     }
   }
@@ -57,7 +65,7 @@ export default class ImagesInfo extends Component {
   render() {
     const { error, status, images } = this.state;
     if (status === 'idle') {
-      return <div>Please, enter the search query</div>;
+      return <p>Please, enter the search query</p>;
     }
     if (status === 'pending') {
       return <Loader />;

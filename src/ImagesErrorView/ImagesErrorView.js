@@ -1,6 +1,6 @@
 import error from '../error.jpg';
 
-export default function () {
+export default function ImagesErrorView() {
   return (
     <div>
       <img src={error} alt="error">

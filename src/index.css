@@ -38,7 +38,9 @@ img {
   max-width: 100%;
   height: auto;
 }
-
+/* div {
+  display: inline-block;
+} */
 /*
  * Стили компонента App
  */
